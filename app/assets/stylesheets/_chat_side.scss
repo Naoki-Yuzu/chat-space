@@ -1,0 +1,65 @@
+// mixin zone
+@mixin text {
+  font-weight: $fw-bold;
+  color: $color-white;
+}
+
+// message zone
+.wrapper {
+  height: 100vh;
+  display: flex;
+  .chat-side {
+    width: 300px;
+    .side-header {
+      padding: 0 20px;
+      height: 100px;
+      background-color: #253141;
+      display: flex;
+      align-items: center;
+      &__box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        &__user-name {
+          font-size: 16px;
+          @include text;
+        }
+        &__menu {
+          display: flex;
+          &__new-group {
+            margin-left: 0.3rem;
+            i {
+              color: $color-white;
+            }
+          }
+          &__edit-user {
+            margin-left: 0.3rem;
+            i {
+              color: $color-white;
+            }
+          }
+        }
+      }
+    }
+    .groups {
+      background-color: #2f3e51;
+      height: calc(100vh - 100px);
+      padding:0 20px;
+      a {
+        text-decoration: none;
+      }
+      .group {
+        @include text;
+        padding-top: 20px;
+        margin-bottom: 40px;
+        &__group-name {
+          margin-bottom: 5px;
+          font-size: 15px;
+        }
+        &__latest-message {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
