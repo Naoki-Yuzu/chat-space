@@ -49,15 +49,16 @@
         text-decoration: none;
       }
       .group {
-        @include text;
         padding-top: 20px;
         margin-bottom: 40px;
-        &__group-name {
+        &__name {
           margin-bottom: 5px;
           font-size: 15px;
+          @include text;
         }
-        &__latest-message {
+        &__message {
           font-size: 11px;
+          @include text;
         }
       }
     }
