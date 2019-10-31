@@ -1,32 +1,35 @@
 .wrapper
   = render "shared/side_bar"
 
-  .chat-main
-    .main-header
-      .main-header__left-box
-        %h2.main-header__left-box__current-group
-          test-group
-        %ul.main-header__left-box__member-list 
-          Member&nbsp;:
-          %li.main-header__left-box__member-list__member
-            &nbsp;Bob
-      = link_to  do
-        .main-header__edit-btn
-          Edit
-    .messages
-      .message
-        .message__upper-info
-          %p.message__upper-info__taker
-            test-user
-          %p.message__upper-info__date
-            2050/01/01(Fri)26:10:10
-        .message__text
-          こんにちは
-    .form
-      %form.new_message#new_message
-        .input-box
-          %input.input-box__text(placeholder="type a message" type="text")
-          %label.input-box__image
-            = fa_icon "image"
-            %input.input-box__image__file(type="file")
-        %input.submit-btn(type="submit" value="Send")
+  -# .chat-main
+  -#   .main-header
+  -#     .main-header__left-box
+  -#       %h2.main-header__left-box__current-group
+  -#         = @group.name
+  -#       %ul.main-header__left-box__member-list 
+  -#         Member&nbsp;:
+  -#         %li.main-header__left-box__member-list__member
+  -#           - @group.users.each do |user|
+  -#             = user.name 
+  -#       = link_to do
+  -#         .main-header__edit-btn
+  -#           Edit
+
+  -#   .messages
+  -#     .message
+  -#       .message__upper-info
+  -#         %p.message__upper-info__taker
+  -#           test-user
+  -#         %p.message__upper-info__date
+  -#           2050/01/01(Fri)26:10:10
+  -#       .message__text
+  -#         こんにちは
+
+  -#   .form
+  -#     = form_for [@group, @message] do |f|
+  -#       .input-box
+  -#         = f.text_field :content, class: "input-box__text", placeholder: "type a message"
+  -#         = f.labal :image, class: "input-box__image" do
+  -#           = fa_icon "image", class:"icon"
+  -#           = f.file_field :image, class: "input-box__image__file"
+  -#       = f.submit "Send", class: "submit-btn"
