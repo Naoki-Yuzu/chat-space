@@ -16,14 +16,8 @@
           Edit
 
     .messages
-      .message
-        .message__upper-info
-          %p.message__upper-info__taker
-            test-user
-          %p.message__upper-info__date
-            2050/01/01(Fri)26:10:10
-        .message__text
-          こんにちは
+      = render @messages
+      
 
     .form
       = form_for [@group, @message] do |f|
