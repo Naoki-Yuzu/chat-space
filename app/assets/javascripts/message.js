@@ -49,12 +49,12 @@ $(function() {
     .done(function(data) {
       let html = buildMessage(data);
       $(".messages").append(html);
-      $("#message_content").val("");
       $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
       $(".submit-btn").prop("disabled", false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
     })
+    $("#new_message")[0].reset();
   });
 });
