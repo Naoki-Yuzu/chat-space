@@ -1,4 +1,4 @@
-$(function () {
+$(document).on("turbolinks:load", function () {
   let userSearchResult = $("#user-search-result");
 
   function buildUser(user) {
