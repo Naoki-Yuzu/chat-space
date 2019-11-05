@@ -15,7 +15,7 @@
         .main-header__edit-btn
           Edit
 
-    .messages
+    .messages{data: {group: {id: "#{@group.id}"}}}
       = render @messages
       
 

@@ -1,5 +1,4 @@
-$(document).on("turbolinks:load",function() {
-
+$(document).on("turbolinks:render", function() {
   function buildMessage(data) {
 
     let htmlBranch = data.image.url ? data.content?
@@ -84,31 +83,37 @@ $(document).on("turbolinks:load",function() {
   };
 
 
+
   var reloadMessages = function() {
-    last_message_id = $(".message").last().data("messageId");
-    group_id = $(".message").last().data("groupId");
-    $.ajax({
-      url: `/groups/${group_id}/api/messages`,
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(data) {
-      if (data.length !== 0) {
-        let insertHTML = '';
-        data.forEach(function(value) {
-        insertHTML = value
-        let html = buildMessageHTML(insertHTML);
-        $(".messages").append(html);
-        $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
-        })
-      } else {
-        return false;
-      }
-    })
-    .fail(function() {
-      alert("エラーです");
-    });
+    let url = window.location.pathname;
+
+    if (url.match(/\/groups\/\d+\/messages/)) {
+      last_message_id = $(".message").last().data("messageId");
+      group_id = $(".messages").data("groupId");
+      $.ajax({
+        url: `/groups/${group_id}/api/messages`,
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(data) {
+          let insertHTML = '';
+          data.forEach(function(value) {
+          insertHTML = value
+          let html = buildMessageHTML(insertHTML);
+          $(".messages").append(html);
+          $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
+          })
+      })
+      .fail(function() {
+        alert("エラーです");
+      });
+    } else {
+      return false;
+    }
+
+
+    
   };
 
   $("#new_message").on("submit", function(e) {
@@ -135,7 +140,8 @@ $(document).on("turbolinks:load",function() {
     $("#new_message")[0].reset();
   });
 
-  let url = location.pathname;
+
+  let url = location.href;
 
   if (url.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 5000);
