@@ -32,6 +32,7 @@ function addGroupUser (userName, userId){
   $("#chat-group-users").append(html)
 }
 
+
   $("#user-search-field").on("keyup", function() {
     let input = $("#user-search-field").val();
     $.ajax({
