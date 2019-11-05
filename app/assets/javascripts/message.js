@@ -35,50 +35,50 @@ $(document).on("turbolinks:render", function() {
 
   var buildMessageHTML = function(data) {
     let htmlBranch = data.content? data.image.url?
-      '<div class="message" data-message-id=' + data.id + ' + data-group-id=' + data.group_id + '>' +
-        '<div class="message__upper-info">' +
-          '<div class="message__upper-info__taker">' +
-            data.user_name +
-          '</div>' +
-          '<div class="message__upper-info__date">' +
-            data.created_at +
-          '</div>' +
-        '</div>' +
-        '<div class="lower-message">' +
-          '<p class="lower-message__content">' +
-            data.content +
-          '</p>' +
-          '<img src="' + data.image.url + '" class="lower-message__image" >' +
-        '</div>' +
-      '</div>' :
-      '<div class="message" data-message-id=' + data.id + ' + data-group-id=' + data.group_id + '>' +
-        '<div class="message__upper-info">' +
-          '<div class="message__upper-info__taker">' +
-            data.user_name +
-          '</div>' +
-          '<div class="message__upper-info__date">' +
-            data.created_at +
-          '</div>' +
-        '</div>' +
-        '<div class="lower-message">' +
-          '<p class="lower-message__content">' +
-            data.content +
-          '</p>' +
-        '</div>' +
-      '</div>' :
-      '<div class="message" data-message-id=' + data.id + ' + data-group-id=' + data.group_id + '>' +
-        '<div class="message__upper-info">' +
-          '<div class="message__upper-info__taker">' +
-            data.user_name +
-          '</div>' +
-          '<div class="message__upper-info__date">' +
-            data.created_at +
-          '</div>' +
-        '</div>' +
-        '<div class="lower-message">' +
-          '<img src="' + data.image.url + '" class="lower-message__image" >' +
-        '</div>' +
-      '</div>';
+    `<div class="message" data-message-id="${data.id}">
+        <div class="message__upper-info">
+          <div class="message__upper-info__taker">
+            ${data.user_name}
+          </div>
+          <div class="message__upper-info__date">
+            ${data.created_at}
+          </div>
+        </div>
+        <div class="lower-message">
+          <p class="lower-message__content">
+            ${data.content}
+          </p>
+          <img src="${data.image.url}" class="lower-message__image" >
+        </div>
+      </div>`:
+      `<div class="message" data-message-id="${data.id}">
+        <div class="message__upper-info">
+          <div class="message__upper-info__taker">
+            ${data.user_name}
+          </div>
+          <div class="message__upper-info__date">
+            ${data.created_at}
+          </div>
+        </div>
+        <div class="lower-message">
+          <p class="lower-message__content">
+            ${data.content}
+          </p>
+        </div>
+      </div> `:
+      `<div class="message" data-message-id="${data.id}">
+        <div class="message__upper-info">
+          <div class="message__upper-info__taker">
+            ${data.user_name}
+          </div> +
+          <div class="message__upper-info__date"> +
+            ${data.created_at}
+          </div>
+        </div>
+        <div class="lower-message">
+          <img src="${data.image.url}" class="lower-message__image" >
+        </div>
+      </div>`;
     return htmlBranch;
   };
 
