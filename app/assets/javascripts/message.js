@@ -87,8 +87,6 @@ $(document).on("turbolinks:load",function() {
   var reloadMessages = function() {
     last_message_id = $(".message").last().data("messageId");
     group_id = $(".message").last().data("groupId");
-    console.log(last_message_id);
-    console.log(group_id);
     $.ajax({
       url: `/groups/${group_id}/api/messages`,
       type: 'get',
@@ -96,19 +94,20 @@ $(document).on("turbolinks:load",function() {
       data: {id: last_message_id}
     })
     .done(function(data) {
-      let insertHTML = '';
-      data.forEach(function(value) {
-        console.log(data);
-        console.log(value);
+      if (data.length !== 0) {
+        let insertHTML = '';
+        data.forEach(function(value) {
         insertHTML = value
-        console.log(insertHTML);
         let html = buildMessageHTML(insertHTML);
         $(".messages").append(html);
         $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
-      })
+        })
+      } else {
+        return false;
+      }
     })
     .fail(function() {
-      console.log('error');
+      alert("エラーです");
     });
   };
 
