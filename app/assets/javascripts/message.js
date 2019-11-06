@@ -1,37 +1,37 @@
 $(document).on("turbolinks:load", function() {
-  function buildMessage(data) {
+  // function buildMessage(data) {
 
-    let htmlBranch = data.image.url ? data.content?
-    `<div class="lower-message">
-        <p class="lower-message__content">
-          ${data.content}
-        </p>
-        <img class="lower-message__image" src="${data.image.url}" alt="Dog 4504013 640">
-      </div>`:
-    `<div class="lower-message">
-        <img class="lower-message__image" src="${data.image.url}" alt="Dog 4504013 640">
-      </div>`:
-    `<div class="lower-message">
-        <p class="lower-message__content">
-          ${data.content}
-        </p>
-      </div>`;
+  //   let htmlBranch = data.image.url ? data.content?
+  //   `<div class="lower-message">
+  //       <p class="lower-message__content">
+  //         ${data.content}
+  //       </p>
+  //       <img class="lower-message__image" src="${data.image.url}" alt="Dog 4504013 640">
+  //     </div>`:
+  //   `<div class="lower-message">
+  //       <img class="lower-message__image" src="${data.image.url}" alt="Dog 4504013 640">
+  //     </div>`:
+  //   `<div class="lower-message">
+  //       <p class="lower-message__content">
+  //         ${data.content}
+  //       </p>
+  //     </div>`;
 
-    let html = 
-     `<div class="message">
-        <div class="message__upper-info">
-          <p class="message__upper-info__taker">
-            ${data.user_name}
-          </p>
-          <p class="message__upper-info__date">
-            ${data.created_at}
-          </p>
-        </div>
-        ${htmlBranch}
-      </div>`
+  //   let html = 
+  //    `<div class="message">
+  //       <div class="message__upper-info">
+  //         <p class="message__upper-info__taker">
+  //           ${data.user_name}
+  //         </p>
+  //         <p class="message__upper-info__date">
+  //           ${data.created_at}
+  //         </p>
+  //       </div>
+  //       ${htmlBranch}
+  //     </div>`
   
-    return html;
-  }
+  //   return html;
+  // }
 
   var buildMessageHTML = function(data) {
     let htmlBranch = data.content? data.image.url?
@@ -89,6 +89,7 @@ $(document).on("turbolinks:load", function() {
 
     if (url.match(/\/groups\/\d+\/messages/)) {
       last_message_id = $(".message").last().data("messageId");
+      console.log(last_message_id);
       group_id = $(".messages").data("groupId");
       $.ajax({
         url: `/groups/${group_id}/api/messages`,
@@ -130,7 +131,7 @@ $(document).on("turbolinks:load", function() {
       contentType: false
     })
     .done(function(data) {
-      let html = buildMessage(data);
+      let html = buildMessageHTML(data);
       $(".messages").append(html);
       $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
       $(".submit-btn").prop("disabled", false);
