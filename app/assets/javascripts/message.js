@@ -1,4 +1,4 @@
-$(document).on("turbolinks:render", function() {
+$(document).on("turbolinks:load", function() {
   function buildMessage(data) {
 
     let htmlBranch = data.image.url ? data.content?
@@ -120,6 +120,7 @@ $(document).on("turbolinks:render", function() {
     e.preventDefault();
     let formData = new FormData(this);
     let url = $(this).attr("action");
+    console.log("text");
     $.ajax({
       url: url,
       type: 'POST',
@@ -141,11 +142,11 @@ $(document).on("turbolinks:render", function() {
   });
 
 
-  let url = location.href;
+  // let url = location.href;
 
-  if (url.match(/\/groups\/\d+\/messages/)) {
+  // if (url.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 5000);
-  } else {
-    return false;
-  }
+  // } else {
+  //   return false;
+  // }
 });
