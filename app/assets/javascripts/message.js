@@ -99,7 +99,10 @@ $(document).on("turbolinks:load", function() {
       })
       .done(function(data) {
           let insertHTML = '';
+          console.log(data);
+          console.log(data.wday);
           data.forEach(function(value) {
+          console.log(value);          
           insertHTML = value
           let html = buildMessageHTML(insertHTML);
           $(".messages").append(html);
@@ -131,6 +134,9 @@ $(document).on("turbolinks:load", function() {
       contentType: false
     })
     .done(function(data) {
+      // console.log(data);
+      // console.log(data.created_at);
+      // console.log(data.wday);
       let html = buildMessageHTML(data);
       $(".messages").append(html);
       $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight});
