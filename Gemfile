@@ -62,7 +62,7 @@ gem "font-awesome-rails"
 gem "devise"
 gem 'devise-i18n'
 gem 'pry-rails'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick'
 
 group :production do
